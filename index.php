@@ -380,33 +380,48 @@ include("includes/header.php")
                   Our <span>products</span>
                </h2>
             </div>
+                <?php
+include('includes/db.php');
+$query = "select * from product";
+$result = mysqli_query($conn, $query);
+               ?>
             <div class="row">
-               <div class="col-sm-6 col-md-4 col-lg-4">
+           <?php
+           while($row = mysqli_fetch_assoc($result)){
+echo'
+<div class="col-sm-6 col-md-4 col-lg-4">
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
-                           <a href="" class="option1">
-                           Men's Shirt
+                           <a href="product-deatil.php?id=' . $row['id'] .' "  class="option1">
+                         '. $row['name'] .'
                            </a>
-                           <a href="" class="option2">
-                           Buy Now
+                            <a href="buy.php?id=' . $row['id'] .' "  class="option2">
+                         buy now
                            </a>
                         </div>
                      </div>
                      <div class="img-box">
-                        <img src="images/p1.png" alt="">
+                        <img src=" images/'.$row['image'] .'" alt="">
                      </div>
                      <div class="detail-box">
                         <h5>
-                           Men's Shirt
+                           '.$row['name'] .'
                         </h5>
                         <h6>
-                           $75
+                           '.$row['price'] .'
                         </h6>
                      </div>
                   </div>
                </div>
-               <div class="col-sm-6 col-md-4 col-lg-4">
+
+';
+
+
+           }
+           ?>
+               
+               <!-- <div class="col-sm-6 col-md-4 col-lg-4">
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
@@ -680,7 +695,7 @@ include("includes/header.php")
                         </h6>
                      </div>
                   </div>
-               </div>
+               </div> -->
             </div>
             <div class="btn-box">
                <a href="">
