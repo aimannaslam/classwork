@@ -1,8 +1,7 @@
 <?php 
 include("includes/header.php")
 ?>
-
-  <!-- inner page section -->
+         <!-- inner page section -->
       <section class="inner_page_head">
          <div class="container_fuild">
             <div class="row">
@@ -23,33 +22,48 @@ include("includes/header.php")
                   Our <span>products</span>
                </h2>
             </div>
+                <?php
+include('includes/db.php');
+$query = "select * from product";
+$result = mysqli_query($conn, $query);
+               ?>
             <div class="row">
-               <div class="col-sm-6 col-md-4 col-lg-3">
+           <?php
+           while($row = mysqli_fetch_assoc($result)){
+echo'
+<div class="col-sm-6 col-md-4 col-lg-4">
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
-                           <a href="" class="option1">
-                           Men's Shirt
+                           <a href="product-deatil.php?id=' . $row['id'] .' "  class="option1">
+                         '. $row['name'] .'
                            </a>
-                           <a href="" class="option2">
-                           Buy Now
+                            <a href="buy.php?id=' . $row['id'] .' "  class="option2">
+                         buy now
                            </a>
                         </div>
                      </div>
                      <div class="img-box">
-                        <img src="images/p1.png" alt="">
+                        <img src=" images/'.$row['image'] .'" alt="">
                      </div>
                      <div class="detail-box">
                         <h5>
-                           Men's Shirt
+                           '.$row['name'] .'
                         </h5>
                         <h6>
-                           $75
+                           '.$row['price'] .'
                         </h6>
                      </div>
                   </div>
                </div>
-               <div class="col-sm-6 col-md-4 col-lg-3">
+
+';
+
+
+           }
+           ?>
+               
+               <!-- <div class="col-sm-6 col-md-4 col-lg-4">
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
@@ -74,7 +88,7 @@ include("includes/header.php")
                      </div>
                   </div>
                </div>
-               <div class="col-sm-6 col-md-4 col-lg-3">
+               <div class="col-sm-6 col-md-4 col-lg-4">
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
@@ -99,7 +113,7 @@ include("includes/header.php")
                      </div>
                   </div>
                </div>
-               <div class="col-sm-6 col-md-4 col-lg-3">
+               <div class="col-sm-6 col-md-4 col-lg-4">
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
@@ -124,7 +138,7 @@ include("includes/header.php")
                      </div>
                   </div>
                </div>
-               <div class="col-sm-6 col-md-4 col-lg-3">
+               <div class="col-sm-6 col-md-4 col-lg-4">
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
@@ -149,7 +163,7 @@ include("includes/header.php")
                      </div>
                   </div>
                </div>
-               <div class="col-sm-6 col-md-4 col-lg-3">
+               <div class="col-sm-6 col-md-4 col-lg-4">
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
@@ -174,7 +188,7 @@ include("includes/header.php")
                      </div>
                   </div>
                </div>
-               <div class="col-sm-6 col-md-4 col-lg-3">
+               <div class="col-sm-6 col-md-4 col-lg-4">
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
@@ -199,7 +213,7 @@ include("includes/header.php")
                      </div>
                   </div>
                </div>
-               <div class="col-sm-6 col-md-4 col-lg-3">
+               <div class="col-sm-6 col-md-4 col-lg-4">
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
@@ -224,7 +238,7 @@ include("includes/header.php")
                      </div>
                   </div>
                </div>
-               <div class="col-sm-6 col-md-4 col-lg-3">
+               <div class="col-sm-6 col-md-4 col-lg-4">
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
@@ -249,7 +263,7 @@ include("includes/header.php")
                      </div>
                   </div>
                </div>
-               <div class="col-sm-6 col-md-4 col-lg-3">
+               <div class="col-sm-6 col-md-4 col-lg-4">
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
@@ -274,7 +288,7 @@ include("includes/header.php")
                      </div>
                   </div>
                </div>
-               <div class="col-sm-6 col-md-4 col-lg-3">
+               <div class="col-sm-6 col-md-4 col-lg-4">
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
@@ -299,7 +313,7 @@ include("includes/header.php")
                      </div>
                   </div>
                </div>
-               <div class="col-sm-6 col-md-4 col-lg-3">
+               <div class="col-sm-6 col-md-4 col-lg-4">
                   <div class="box">
                      <div class="option_container">
                         <div class="options">
@@ -323,7 +337,7 @@ include("includes/header.php")
                         </h6>
                      </div>
                   </div>
-               </div>
+               </div> -->
             </div>
             <div class="btn-box">
                <a href="">
@@ -333,6 +347,122 @@ include("includes/header.php")
          </div>
       </section>
       <!-- end product section -->
+
+      <!-- subscribe section -->
+      <section class="subscribe_section">
+         <div class="container-fuild">
+            <div class="box">
+               <div class="row">
+                  <div class="col-md-6 offset-md-3">
+                     <div class="subscribe_form ">
+                        <div class="heading_container heading_center">
+                           <h3>Subscribe To Get Discount Offers</h3>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+                        <form action="">
+                           <input type="email" placeholder="Enter your email">
+                           <button>
+                           subscribe
+                           </button>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- end subscribe section -->
+      <!-- client section -->
+      <section class="client_section layout_padding">
+         <div class="container">
+            <div class="heading_container heading_center">
+               <h2>
+                  Customer's Testimonial
+               </h2>
+            </div>
+            <div id="carouselExample3Controls" class="carousel slide" data-ride="carousel">
+               <div class="carousel-inner">
+                  <div class="carousel-item active">
+                     <div class="box col-lg-10 mx-auto">
+                        <div class="img_container">
+                           <div class="img-box">
+                              <div class="img_box-inner">
+                                 <img src="images/client.jpg" alt="">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="detail-box">
+                           <h5>
+                              Anna Trevor
+                           </h5>
+                           <h6>
+                              Customer
+                           </h6>
+                           <p>
+                              Dignissimos reprehenderit repellendus nobis error quibusdam? Atque animi sint unde quis reprehenderit, et, perspiciatis, debitis totam est deserunt eius officiis ipsum ducimus ad labore modi voluptatibus accusantium sapiente nam! Quaerat.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="carousel-item">
+                     <div class="box col-lg-10 mx-auto">
+                        <div class="img_container">
+                           <div class="img-box">
+                              <div class="img_box-inner">
+                                 <img src="images/client.jpg" alt="">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="detail-box">
+                           <h5>
+                              Anna Trevor
+                           </h5>
+                           <h6>
+                              Customer
+                           </h6>
+                           <p>
+                              Dignissimos reprehenderit repellendus nobis error quibusdam? Atque animi sint unde quis reprehenderit, et, perspiciatis, debitis totam est deserunt eius officiis ipsum ducimus ad labore modi voluptatibus accusantium sapiente nam! Quaerat.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="carousel-item">
+                     <div class="box col-lg-10 mx-auto">
+                        <div class="img_container">
+                           <div class="img-box">
+                              <div class="img_box-inner">
+                                 <img src="images/client.jpg" alt="">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="detail-box">
+                           <h5>
+                              Anna Trevor
+                           </h5>
+                           <h6>
+                              Customer
+                           </h6>
+                           <p>
+                              Dignissimos reprehenderit repellendus nobis error quibusdam? Atque animi sint unde quis reprehenderit, et, perspiciatis, debitis totam est deserunt eius officiis ipsum ducimus ad labore modi voluptatibus accusantium sapiente nam! Quaerat.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="carousel_btn_box">
+                  <a class="carousel-control-prev" href="#carouselExample3Controls" role="button" data-slide="prev">
+                  <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                  <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExample3Controls" role="button" data-slide="next">
+                  <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                  <span class="sr-only">Next</span>
+                  </a>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- end client section -->
 
 <?php 
 include("includes/footer.php")
