@@ -1,9 +1,10 @@
-<?php 
-include("includes/header.php")
+
+  <?php 
+// include("includes/header.php")
 ?>
 
      <!-- inner page section -->
-      <section class="inner_page_head">
+      <!-- <section class="inner_page_head">
          <div class="container_fuild">
             <div class="row">
                <div class="col-md-12">
@@ -13,11 +14,10 @@ include("includes/header.php")
                </div>
             </div>
          </div>
-      </section>
+      </section> -->
       <!-- end inner page section -->
       <!-- why section -->
-      <section class="why_section layout_padding">
-        
+      <!-- <section class="why_section layout_padding">       -->
 <style>
 .register-box {
   display: flex;
@@ -90,15 +90,44 @@ include("includes/header.php")
 
 
 <?php
+
 session_start();
+
 include('includes/db.php');
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+$username = $_POST['name'];
+$useremail = $_POST['email'];
+$userpassword = $_POST['password'];
+$userrole = $_POST['role']; 
 
-if($_SERVER["request_method"] -- "post"){
-$name = $_POST['name'];
-$email = $_POST['email'];
-$password = $_POST['password'];
-$role = $_POST['role']; 
+$check = $conn->query("SELECT * FROM users WHERE email = '$useremail'");
 
+
+if($check->num_rows > 0){
+  echo "<script>('email already exist');</script>";
+  exit;
+}
+
+$sql = "INSERT INTO users (name, email, password, role) 
+        VALUES ('$username', '$useremail', '$userpassword', '$userrole')";
+
+
+if($conn->query($sql)){
+$_SESSION['email'] = $useremail;
+  $_SESSION['role'] = $userrole;
+
+
+  // redirect based on role 
+
+  if($userrole == 'admin'){
+    header(header: "location: admin/dashboard.php");
+  }
+
+  else{
+    header(header: "location: home.php");
+  }
+
+}
 }
 ?>
       
@@ -107,7 +136,7 @@ $role = $_POST['role'];
          <!-- form -->
   <div class="register form">
 
-    <form action="home.php" method="POST">
+    <form action="" method="POST">
       <div class="mb-3">
         <label class="form-label">Full Name</label>
         <input type="text" name="name" class="form-control" required placeholder="your name">
@@ -141,5 +170,5 @@ $role = $_POST['role'];
     
 
 <?php 
-include("includes/footer.php")
+// include("includes/footer.php")
 ?>

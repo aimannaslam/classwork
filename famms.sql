@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 28, 2025 at 05:40 PM
+-- Generation Time: Jul 30, 2025 at 02:14 PM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -53,6 +53,22 @@ INSERT INTO `product` (`id`, `name`, `price`, `image`) VALUES
 (10, 'men\'s shirt', 65.00, 'p10.png'),
 (11, 'men\'s shirt', 65.00, 'p11.png'),
 (12, 'men\'s shirt', 65.00, 'p12.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int NOT NULL,
+  `name` varchar(200) DEFAULT NULL,
+  `email` varchar(200) DEFAULT NULL,
+  `PASSWORD` int DEFAULT NULL,
+  `role` enum('user','admin') DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
