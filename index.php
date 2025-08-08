@@ -159,13 +159,14 @@ $_SESSION['email'] = $useremail;
         </select>
       </div>
       <button type="submit" class="btn btn-primary w-100">Register</button>
+      <p class="text-center mt-3">Already have an account? <a href="login.php">Login Here</a></p>
     </form>
   </div>
 </div>
 </div>
 
          </div>
-      </section>
+      
       <!-- end why section -->
     
 
